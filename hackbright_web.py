@@ -63,6 +63,24 @@ def add_new_student():
 
     return render_template("made_student.html", first_name=first_name, github=github)
 
+@app.route("/add-project")
+def get_project_info():
+    """ shows user template for adding new student"""
+
+    return render_template("new_project.html")
+
+@app.route("/add-project", methods=['POST'])
+def add_new_project():
+    """ add new project to projects table in hackbright db"""
+
+    title = request.form["title"]
+    description = request.form["description"]
+    max_grade = request.form["max_grade"]
+
+    hackbright.make_new_project(title, description, max_grade)
+
+    return redirect("/")
+
 @app.route("/project")
 def view_project_info():
 
