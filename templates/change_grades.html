@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+<head>
+    <title>Change Grades</title>
+</head>
+
+<body>
+
+ <form action="/change-grades" method="POST">
+  <select name="student">
+    {% for student in students %}
+    <option value="{{ student[2] }}">{{ student[0] }}  {{ student[1] }}</option>
+    {% endfor %}
+  </select>
+  <br><br>
+
+  <select name="project">
+    {% for project in projects %}
+    <option value="{{ project[0] }}">{{ project[0] }}</option>
+    {% endfor %}
+  </select>
+  <br><br>
+
+  <select name="grade">
+    {% for i in range(101) %}
+    <option value="{{i}}">{{ i }}</option>
+    {% endfor %}
+  </select>
+  <br><br>
+
+
+  <input type="submit">
+</form>
+
+
+
+</body>
+</html>

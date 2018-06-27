@@ -8,14 +8,17 @@
 
   <form action="/add-project" method='POST'>
       <label>Enter Project Title
-          <input type="text" name="title" required>
-      </label>
-      <label>Enter Project Description
-          <input type="text" name="description" required>
-      </label>
+          <textarea name="title" rows="5" cols="10" required></textarea>
+      </label> 
+      <br>
+      <label> Enter Project Description
+      <textarea name="description" rows="20" cols="30" required></textarea>
+    </label>
+    <br>
       <label>Enter Project Max Grade
           <input type="text" name="max_grade" required>
       </label>
+      <br>
       <input type="submit" value="Add Project">
   </form>
 

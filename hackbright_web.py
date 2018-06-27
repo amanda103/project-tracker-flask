@@ -92,7 +92,29 @@ def view_project_info():
 
     return render_template("project_info.html", project_info=project_info, grades=grades)
 
+@app.route("/change-grades")
+def get_project_student_info():
+    """ shows user template for adding grade by student and project"""
 
+    students = hackbright.get_all_students()
+    projects = hackbright.get_all_projects()
+
+    return render_template("change_grades.html", students =students, projects=projects)
+
+@app.route("/change_grades", methods=['POST'])
+def add_new_grade():
+    """ add new grade to grades table in hackbright db"""
+
+    student = request.form["student"]
+    project_title = request.form["project"]
+    grade = request.form["grade"]
+
+    student_grade = hackbright.get_grade_by_github_title(student, project_title)
+
+    if student_grade is None:
+        hackbright.assign_grade(student, project_title, grade)
+
+    # return redirect("/")
 
 
 # @app.route("/made-student")
